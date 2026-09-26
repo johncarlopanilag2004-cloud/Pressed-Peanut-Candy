@@ -1,12 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Pressed Peanut Candy from Ormoc City, Leyte — a simple, convenient, peanut-based snack made with roasted red peanuts, sugar, and salt." />
     <title>Pressed Peanut Candy | Ormoc City</title>
-
     <style>
+        :root {
+            --brown-900: #3b2417;
+            --brown-800: #6b3e26;
+            --brown-700: #8b5435;
+            --brown-600: #a66a40;
+            --gold: #ffd166;
+            --gold-soft: #ffe9a8;
+            --cream: #fffaf0;
+            --cream-2: #f5e6cc;
+            --white: #ffffff;
+            --text: #2f241d;
+            --muted: #5d4b40;
+            --shadow: 0 12px 30px rgba(59, 36, 23, 0.12);
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -14,95 +28,29 @@
             scroll-behavior: smooth;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: Arial, sans-serif;
             line-height: 1.6;
-            color: #333;
-            background-color: #fffaf0;
+            color: var(--text);
+            background: var(--cream);
         }
 
-        /* NAVIGATION */
-        header {
-            background-color: #6b3e26;
-            color: white;
-            padding: 15px 8%;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
+        img {
+            max-width: 100%;
+            display: block;
         }
 
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 22px;
-            font-weight: bold;
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 25px;
-        }
-
-        nav a {
-            color: white;
+        a {
             text-decoration: none;
-            font-weight: bold;
         }
 
-        nav a:hover {
-            color: #ffd166;
-        }
-
-        /* HERO */
-        .hero {
-            min-height: 90vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 50px 8%;
-            background-color: #8b5435;
-            color: white;
-        }
-
-        .hero-content {
-            max-width: 750px;
-        }
-
-        .hero h1 {
-            font-size: 55px;
-            margin-bottom: 15px;
-        }
-
-        .hero p {
-            font-size: 20px;
-            margin-bottom: 30px;
-        }
-
-        .button {
-            display: inline-block;
-            padding: 13px 25px;
-            background-color: #ffd166;
-            color: #4a2a19;
-            text-decoration: none;
-            border-radius: 25px;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-
-        .button:hover {
-            transform: scale(1.05);
-            background-color: white;
-        }
-
-        /* GENERAL SECTIONS */
-        section {
-            padding: 70px 8%;
+        .container {
+            width: min(1120px, 90%);
+            margin: 0 auto;
         }
 
         .section-title {
@@ -111,556 +59,778 @@
         }
 
         .section-title h2 {
-            color: #6b3e26;
-            font-size: 35px;
+            color: var(--brown-800);
+            font-size: clamp(2rem, 3vw, 2.8rem);
             margin-bottom: 10px;
         }
 
         .section-title p {
-            color: #666;
+            color: var(--muted);
+            font-size: 1.05rem;
+        }
+
+        .button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px 26px;
+            border-radius: 999px;
+            background: var(--gold);
+            color: var(--brown-900);
+            font-weight: 700;
+            transition: 0.25s ease;
+            box-shadow: 0 10px 25px rgba(255, 209, 102, 0.35);
+        }
+
+        .button:hover {
+            transform: translateY(-2px) scale(1.02);
+            background: var(--white);
+        }
+
+        .button.secondary {
+            background: transparent;
+            border: 2px solid rgba(255,255,255,0.9);
+            color: var(--white);
+            box-shadow: none;
+        }
+
+        .button.secondary:hover {
+            background: var(--white);
+            color: var(--brown-800);
+        }
+
+        /* HEADER */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(107, 62, 38, 0.95);
+            backdrop-filter: blur(6px);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            min-height: 78px;
+        }
+
+        .logo {
+            color: var(--white);
+            font-size: 1.45rem;
+            font-weight: 800;
+            letter-spacing: 0.02em;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 26px;
+            align-items: center;
+        }
+
+        nav a {
+            color: var(--white);
+            font-weight: 700;
+            opacity: 0.96;
+            transition: 0.2s ease;
+        }
+
+        nav a:hover {
+            color: var(--gold);
+        }
+
+        /* HERO */
+        .hero {
+            background: linear-gradient(135deg, var(--brown-700), var(--brown-800));
+            color: var(--white);
+            padding: 90px 0 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at top left, rgba(255,255,255,0.14), transparent 40%);
+        }
+
+        .hero .container {
+            position: relative;
+            display: grid;
+            grid-template-columns: 1.15fr 0.85fr;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .hero-content {
+            max-width: 700px;
+        }
+
+        .eyebrow {
+            display: inline-block;
+            background: rgba(255,255,255,0.12);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: var(--gold-soft);
+            padding: 8px 14px;
+            border-radius: 999px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            font-size: 0.72rem;
+            font-weight: 700;
+            margin-bottom: 18px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.7rem, 5vw, 5rem);
+            line-height: 1.08;
+            margin-bottom: 18px;
+            letter-spacing: -0.05em;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: rgba(255,255,255,0.92);
+            margin-bottom: 30px;
+            max-width: 620px;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            align-items: center;
+        }
+
+        .hero-visual {
+            display: flex;
+            justify-content: center;
+        }
+
+        .hero-card {
+            width: min(100%, 420px);
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 30px;
+            padding: 24px;
+            box-shadow: var(--shadow);
+        }
+
+        .peanut-box {
+            background: linear-gradient(180deg, #f8d88e, #d9a85d);
+            border-radius: 24px;
+            padding: 30px 22px;
+            text-align: center;
+            color: var(--brown-900);
+            min-height: 260px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .peanut-box::before,
+        .peanut-box::after {
+            content: "🥜";
+            position: absolute;
+            font-size: 5rem;
+            opacity: 0.12;
+        }
+
+        .peanut-box::before {
+            top: 18px;
+            left: 18px;
+        }
+
+        .peanut-box::after {
+            bottom: 12px;
+            right: 18px;
+        }
+
+        .peanut-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .peanut-content h3 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .peanut-content p {
+            color: rgba(59, 36, 23, 0.85);
+            font-weight: 700;
+            margin: 0;
+            font-size: 1rem;
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-top: 22px;
+            text-align: center;
+        }
+
+        .hero-stats div {
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.18);
+            padding: 14px 10px;
+            border-radius: 18px;
+        }
+
+        .hero-stats strong {
+            display: block;
+            font-size: 1.4rem;
+            color: var(--gold-soft);
+        }
+
+        .hero-stats span {
+            font-size: 0.82rem;
+            opacity: 0.9;
         }
 
         /* ABOUT */
         .about {
-            max-width: 900px;
-            margin: auto;
+            padding: 90px 0;
         }
 
-        .about-text h3 {
-            color: #6b3e26;
-            font-size: 28px;
-            margin-bottom: 15px;
+        .about-wrap {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 40px;
+            align-items: center;
         }
 
-        .about-text p {
-            margin-bottom: 15px;
+        .about-copy h3 {
+            color: var(--brown-800);
+            font-size: clamp(1.8rem, 2vw, 2.5rem);
+            margin-bottom: 20px;
+        }
+
+        .about-copy p {
+            color: var(--muted);
+            margin-bottom: 16px;
+            font-size: 1.04rem;
+        }
+
+        .about-panel {
+            background: linear-gradient(180deg, var(--white), #fdf0d7);
+            border-radius: 28px;
+            padding: 28px;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(107, 62, 38, 0.09);
+        }
+
+        .about-list {
+            list-style: none;
+            display: grid;
+            gap: 18px;
+        }
+
+        .about-list li {
+            display: flex;
+            gap: 14px;
+            align-items: flex-start;
+            color: var(--muted);
+        }
+
+        .about-list .icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            background: var(--gold-soft);
+            color: var(--brown-800);
+            font-size: 1.3rem;
+            flex-shrink: 0;
         }
 
         /* PRODUCT */
-        .product-container {
+        .product {
+            background: var(--white);
+            padding: 90px 0;
+        }
+
+        .product-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 25px;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 26px;
         }
 
         .card {
-            background-color: white;
-            padding: 30px;
-            border-radius: 15px;
-            text-align: center;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-            transition: 0.3s;
+            background: var(--cream);
+            border: 1px solid rgba(107, 62, 38, 0.08);
+            border-radius: 24px;
+            padding: 30px 24px;
+            box-shadow: 0 10px 24px rgba(107, 62, 38, 0.05);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
         }
 
         .card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-6px);
+            box-shadow: 0 18px 30px rgba(107, 62, 38, 0.08);
         }
 
         .card-icon {
-            font-size: 45px;
-            margin-bottom: 15px;
+            font-size: 3rem;
+            margin-bottom: 12px;
         }
 
         .card h3 {
-            color: #6b3e26;
+            color: var(--brown-800);
             margin-bottom: 10px;
+            font-size: 1.5rem;
+        }
+
+        .card p {
+            color: var(--muted);
         }
 
         /* PROCESS */
         .process {
-            background-color: #f5e6cc;
+            background: var(--cream-2);
+            padding: 90px 0;
         }
 
-        .process-container {
+        .process-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 24px;
         }
 
         .process-step {
-            background-color: white;
-            padding: 25px;
+            background: var(--white);
+            border-radius: 22px;
+            padding: 26px 20px;
             text-align: center;
-            border-radius: 15px;
+            box-shadow: 0 10px 24px rgba(59, 36, 23, 0.06);
         }
 
         .step-number {
-            width: 50px;
-            height: 50px;
-            margin: 0 auto 15px;
+            width: 52px;
+            height: 52px;
+            line-height: 52px;
             border-radius: 50%;
-            background-color: #6b3e26;
-            color: white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 20px;
-            font-weight: bold;
+            background: var(--brown-800);
+            color: var(--white);
+            margin: 0 auto 18px;
+            font-size: 1.2rem;
+            font-weight: 800;
         }
 
         .process-step h3 {
-            color: #6b3e26;
+            color: var(--brown-800);
             margin-bottom: 10px;
+            font-size: 1.3rem;
+        }
+
+        .process-step p {
+            color: var(--muted);
         }
 
         /* BENEFITS */
         .benefits {
+            padding: 90px 0;
+        }
+
+        .benefits-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 25px;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 26px;
         }
 
-        /* PRODUCT DETAILS */
-        .details {
-            background-color: white;
+        /* SPECS */
+        .specs {
+            background: var(--white);
+            padding: 90px 0;
         }
 
-        .details-container {
+        .specs-box {
             max-width: 900px;
-            margin: auto;
+            margin: 0 auto;
+            background: var(--cream);
+            border: 1px solid rgba(107, 62, 38, 0.08);
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(107, 62, 38, 0.05);
         }
 
-        .detail-row {
+        .spec-row {
             display: flex;
             justify-content: space-between;
-            padding: 15px 20px;
-            border-bottom: 1px solid #ddd;
+            gap: 20px;
+            padding: 18px 24px;
+            border-bottom: 1px solid rgba(107, 62, 38, 0.1);
         }
 
-        .detail-row strong {
-            color: #6b3e26;
+        .spec-row:last-child {
+            border-bottom: none;
+        }
+
+        .spec-row strong {
+            color: var(--brown-800);
+            font-size: 1.05rem;
+        }
+
+        .spec-row span {
+            color: var(--muted);
+            text-align: right;
         }
 
         /* CTA */
         .cta {
-            background-color: #6b3e26;
-            color: white;
+            background: linear-gradient(135deg, var(--brown-800), var(--brown-900));
+            color: var(--white);
+            padding: 85px 0;
             text-align: center;
         }
 
         .cta h2 {
-            font-size: 35px;
-            margin-bottom: 15px;
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 12px;
         }
 
         .cta p {
-            margin-bottom: 25px;
+            color: rgba(255,255,255,0.8);
+            margin: 0 auto 28px;
+            max-width: 620px;
+            font-size: 1.08rem;
         }
 
         /* FOOTER */
         footer {
-            background-color: #3b2417;
-            color: white;
+            background: #2c1b14;
+            color: var(--white);
             text-align: center;
-            padding: 25px;
+            padding: 28px 0;
+        }
+
+        .footer-brand {
+            font-weight: 800;
+            font-size: 1.15rem;
+            margin-bottom: 8px;
         }
 
         footer p {
-            margin: 5px;
+            opacity: 0.9;
+            margin: 6px 0;
         }
 
-        /* MOBILE */
-        @media (max-width: 768px) {
+        @media (max-width: 900px) {
+            .hero .container,
+            .about-wrap {
+                grid-template-columns: 1fr;
+            }
 
+            .product-grid,
+            .process-grid,
+            .benefits-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
             nav {
                 flex-direction: column;
+                justify-content: center;
                 gap: 15px;
+                padding: 18px 0;
             }
 
             nav ul {
-                gap: 12px;
                 flex-wrap: wrap;
                 justify-content: center;
+                gap: 12px 18px;
             }
 
-            .hero h1 {
-                font-size: 40px;
+            .hero {
+                padding-top: 72px;
             }
 
-            .hero p {
-                font-size: 17px;
-            }
-
-            .product-container {
-                grid-template-columns: 1fr;
-            }
-
-            .process-container {
-                grid-template-columns: 1fr;
-            }
-
-            .benefits {
-                grid-template-columns: 1fr;
-            }
-
-            .detail-row {
+            .hero-actions {
                 flex-direction: column;
-                gap: 5px;
+                align-items: stretch;
+            }
+
+            .button {
+                width: 100%;
+            }
+
+            .hero-stats,
+            .product-grid,
+            .process-grid,
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .spec-row {
+                flex-direction: column;
+                text-align: left;
+            }
+
+            .spec-row span {
+                text-align: left;
             }
         }
     </style>
 </head>
-
 <body>
-
-    <!-- NAVIGATION -->
     <header>
-        <nav>
-            <div class="logo">🥜 Pressed Peanut Candy</div>
-
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#product">Product</a></li>
-                <li><a href="#process">Process</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
+        <div class="container">
+            <nav>
+                <div class="logo">🥜 Pressed Peanut Candy</div>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#product">Product</a></li>
+                    <li><a href="#process">Process</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
-
-    <!-- HERO SECTION -->
     <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <div class="eyebrow">Ormoc City, Leyte</div>
+                <h1>Pressed Peanut Candy</h1>
+                <p>
+                    A simple and delicious peanut-based treat, carefully pressed into a convenient
+                    individual serving for everyday snacking.
+                </p>
 
-        <div class="hero-content">
+                <div class="hero-actions">
+                    <a class="button" href="#product">Discover Our Product</a>
+                    <a class="button secondary" href="mailto:pressedpeanutcandy69@gmail.com">Contact Us</a>
+                </div>
+            </div>
 
-            <h1>Pressed Peanut Candy</h1>
+            <div class="hero-visual">
+                <div class="hero-card">
+                    <div class="peanut-box">
+                        <div class="peanut-content">
+                            <h3>Crunchy</h3>
+                            <p>Roasted peanuts, pressed into a tasty bite-sized snack.</p>
+                        </div>
+                    </div>
 
-            <p>
-                A simple and delicious peanut-based treat,
-                carefully pressed into a convenient individual serving.
-            </p>
-
-            <a href="#product" class="button">
-                Discover Our Product
-            </a>
-
+                    <div class="hero-stats">
+                        <div>
+                            <strong>100%</strong>
+                            <span>Peanut-based</span>
+                        </div>
+                        <div>
+                            <strong>4</strong>
+                            <span>Easy steps</span>
+                        </div>
+                        <div>
+                            <strong>1</strong>
+                            <span>Individual pack</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-
     </section>
 
-
-    <!-- ABOUT SECTION -->
-    <section id="about">
-
-        <div class="section-title">
-            <h2>About Our Product</h2>
-            <p>A simple snack made with carefully selected ingredients.</p>
-        </div>
-
-        <div class="about">
-
-            <div class="about-text">
-
+    <section class="about" id="about">
+        <div class="container about-wrap">
+            <div class="about-copy">
                 <h3>What is Pressed Peanut Candy?</h3>
-
                 <p>
-                    Pressed Peanut Candy is a peanut-based snack made from
-                    roasted red peanuts, sugar, and salt. The peanuts are
-                    processed into a fine, powdery-like consistency before
-                    being pressed into a compact shape.
+                    Pressed Peanut Candy is a peanut-based snack made from roasted red peanuts,
+                    sugar, and salt. The peanuts are processed into a powdery-like consistency before
+                    being pressed into a compact and convenient shape.
                 </p>
-
                 <p>
-                    The finished product is individually packaged to provide
-                    convenience, cleanliness, and easier handling for
-                    consumers.
+                    Each piece is individually packaged to provide cleanliness, convenience, and easier
+                    handling for consumers who want a simple yet satisfying snack.
                 </p>
-
                 <p>
-                    The product is intended for consumers in Ormoc City,
-                    Leyte who are looking for a simple and convenient
-                    peanut-based snack.
+                    It is intended for local consumers in Ormoc City, Leyte who enjoy straightforward,
+                    affordable treats made with familiar ingredients.
                 </p>
-
             </div>
 
+            <div class="about-panel">
+                <ul class="about-list">
+                    <li>
+                        <div class="icon">✔</div>
+                        <div>
+                            <strong>Simple ingredients</strong><br />
+                            Made with roasted red peanuts, sugar, and salt.
+                        </div>
+                    </li>
+                    <li>
+                        <div class="icon">📦</div>
+                        <div>
+                            <strong>Convenient packaging</strong><br />
+                            Individually packed for ease and cleanliness.
+                        </div>
+                    </li>
+                    <li>
+                        <div class="icon">🥜</div>
+                        <div>
+                            <strong>Made for snacking</strong><br />
+                            Designed as an accessible peanut snack for daily enjoyment.
+                        </div>
+                    </li>
+                </ul>
+            </div>
         </div>
-
     </section>
 
+    <section class="product" id="product">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Product</h2>
+                <p>Simple ingredients. Convenient packaging. Enjoyable snack.</p>
+            </div>
 
-    <!-- PRODUCT FEATURES -->
-    <section id="product">
+            <div class="product-grid">
+                <div class="card">
+                    <div class="card-icon">🥜</div>
+                    <h3>Roasted Peanuts</h3>
+                    <p>Red peanuts are roasted before processing to prepare them for production.</p>
+                </div>
 
-        <div class="section-title">
+                <div class="card">
+                    <div class="card-icon">🍬</div>
+                    <h3>Pressed Form</h3>
+                    <p>The peanut mixture is pressed using a cylindrical mold to create its shape.</p>
+                </div>
 
-            <h2>Our Product</h2>
-
-            <p>
-                Simple ingredients. Convenient packaging.
-                Enjoyable snack.
-            </p>
-
+                <div class="card">
+                    <div class="card-icon">📦</div>
+                    <h3>Individual Packaging</h3>
+                    <p>Each piece is packaged to maintain cleanliness, convenience, and protection.</p>
+                </div>
+            </div>
         </div>
-
-        <div class="product-container">
-
-            <div class="card">
-
-                <div class="card-icon">🥜</div>
-
-                <h3>Roasted Peanuts</h3>
-
-                <p>
-                    Red peanuts are roasted before processing
-                    to prepare them for production.
-                </p>
-
-            </div>
-
-
-            <div class="card">
-
-                <div class="card-icon">🍬</div>
-
-                <h3>Pressed Form</h3>
-
-                <p>
-                    The processed peanut mixture is pressed
-                    using a cylindrical mold to create its shape.
-                </p>
-
-            </div>
-
-
-            <div class="card">
-
-                <div class="card-icon">📦</div>
-
-                <h3>Individual Packaging</h3>
-
-                <p>
-                    Each piece is individually packaged for
-                    convenience, cleanliness, and protection.
-                </p>
-
-            </div>
-
-        </div>
-
     </section>
 
-
-    <!-- MANUFACTURING PROCESS -->
     <section class="process" id="process">
+        <div class="container">
+            <div class="section-title">
+                <h2>Manufacturing Process</h2>
+                <p>From roasted peanuts to individually packaged candy.</p>
+            </div>
 
-        <div class="section-title">
+            <div class="process-grid">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <h3>Roasting</h3>
+                    <p>Red peanuts are roasted properly before moving to the next stage.</p>
+                </div>
 
-            <h2>Manufacturing Process</h2>
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <h3>Blending</h3>
+                    <p>The roasted peanuts are blended until they reach a powdery-like consistency.</p>
+                </div>
 
-            <p>
-                From roasted peanuts to individually packaged candy.
-            </p>
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <h3>Pressing</h3>
+                    <p>The processed mixture is placed into a cylindrical mold and pressed.</p>
+                </div>
 
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <h3>Packaging</h3>
+                    <p>Finished pieces are individually packaged to protect the product.</p>
+                </div>
+            </div>
         </div>
-
-
-        <div class="process-container">
-
-            <div class="process-step">
-
-                <div class="step-number">1</div>
-
-                <h3>Roasting</h3>
-
-                <p>
-                    Red peanuts are roasted properly before
-                    proceeding to the next stage.
-                </p>
-
-            </div>
-
-
-            <div class="process-step">
-
-                <div class="step-number">2</div>
-
-                <h3>Blending</h3>
-
-                <p>
-                    The roasted peanuts are blended until they
-                    reach a powdery-like consistency.
-                </p>
-
-            </div>
-
-
-            <div class="process-step">
-
-                <div class="step-number">3</div>
-
-                <h3>Pressing</h3>
-
-                <p>
-                    The processed peanut mixture is placed
-                    into a cylindrical mold and pressed.
-                </p>
-
-            </div>
-
-
-            <div class="process-step">
-
-                <div class="step-number">4</div>
-
-                <h3>Packaging</h3>
-
-                <p>
-                    Finished pieces are individually packaged
-                    to protect the product.
-                </p>
-
-            </div>
-
-        </div>
-
     </section>
 
+    <section class="benefits">
+        <div class="container">
+            <div class="section-title">
+                <h2>Product Benefits</h2>
+                <p>Designed with convenience and consumer needs in mind.</p>
+            </div>
 
-    <!-- BENEFITS -->
-    <section>
+            <div class="benefits-grid">
+                <div class="card">
+                    <div class="card-icon">✨</div>
+                    <h3>Convenient</h3>
+                    <p>Individual packaging makes the product easy to carry and consume.</p>
+                </div>
 
-        <div class="section-title">
+                <div class="card">
+                    <div class="card-icon">🥜</div>
+                    <h3>Peanut-Based</h3>
+                    <p>Made primarily from roasted red peanuts, combined with sugar and salt.</p>
+                </div>
 
-            <h2>Product Benefits</h2>
-
-            <p>
-                Designed with convenience and consumer needs in mind.
-            </p>
-
+                <div class="card">
+                    <div class="card-icon">💰</div>
+                    <h3>Accessible Snack</h3>
+                    <p>A simple snack concept intended to provide an affordable option for consumers.</p>
+                </div>
+            </div>
         </div>
-
-
-        <div class="benefits">
-
-            <div class="card">
-
-                <div class="card-icon">✨</div>
-
-                <h3>Convenient</h3>
-
-                <p>
-                    Individual packaging makes the product
-                    easy to carry and consume.
-                </p>
-
-            </div>
-
-
-            <div class="card">
-
-                <div class="card-icon">🥜</div>
-
-                <h3>Peanut-Based</h3>
-
-                <p>
-                    Made primarily from roasted red peanuts,
-                    combined with sugar and salt.
-                </p>
-
-            </div>
-
-
-            <div class="card">
-
-                <div class="card-icon">💰</div>
-
-                <h3>Accessible Snack</h3>
-
-                <p>
-                    A simple snack concept intended to provide
-                    an affordable option for consumers.
-                </p>
-
-            </div>
-
-        </div>
-
     </section>
 
+    <section class="specs">
+        <div class="container">
+            <div class="section-title">
+                <h2>Product Specifications</h2>
+                <p>Basic characteristics of Pressed Peanut Candy.</p>
+            </div>
 
-    <!-- PRODUCT SPECIFICATIONS -->
-    <section class="details">
-
-        <div class="section-title">
-
-            <h2>Product Specifications</h2>
-
-            <p>Basic characteristics of Pressed Peanut Candy.</p>
-
+            <div class="specs-box">
+                <div class="spec-row">
+                    <strong>Product Name</strong>
+                    <span>Pressed Peanut Candy</span>
+                </div>
+                <div class="spec-row">
+                    <strong>Main Ingredient</strong>
+                    <span>Roasted Red Peanuts</span>
+                </div>
+                <div class="spec-row">
+                    <strong>Other Ingredients</strong>
+                    <span>Sugar and Salt</span>
+                </div>
+                <div class="spec-row">
+                    <strong>Form</strong>
+                    <span>Pressed / Molded</span>
+                </div>
+                <div class="spec-row">
+                    <strong>Packaging</strong>
+                    <span>Individual Packaging</span>
+                </div>
+                <div class="spec-row">
+                    <strong>Target Market</strong>
+                    <span>Consumers in Ormoc City, Leyte</span>
+                </div>
+            </div>
         </div>
-
-
-        <div class="details-container">
-
-            <div class="detail-row">
-                <strong>Product Name</strong>
-                <span>Pressed Peanut Candy</span>
-            </div>
-
-            <div class="detail-row">
-                <strong>Main Ingredient</strong>
-                <span>Roasted Red Peanuts</span>
-            </div>
-
-            <div class="detail-row">
-                <strong>Other Ingredients</strong>
-                <span>Sugar and Salt</span>
-            </div>
-
-            <div class="detail-row">
-                <strong>Form</strong>
-                <span>Pressed / Molded</span>
-            </div>
-
-            <div class="detail-row">
-                <strong>Packaging</strong>
-                <span>Individual Packaging</span>
-            </div>
-
-            <div class="detail-row">
-                <strong>Target Market</strong>
-                <span>Consumers in Ormoc City, Leyte</span>
-            </div>
-
-        </div>
-
     </section>
 
-
-    <!-- CONTACT / CTA -->
     <section class="cta" id="contact">
-
-        <h2>Try Pressed Peanut Candy</h2>
-
-        <p>
-            A simple peanut-based treat made for convenient snacking.
-        </p>
-
-        <a href="mailto:pressedpeanutcandy69@gmail.com" class="button">
-            Contact Us
-        </a>
-
+        <div class="container">
+            <h2>Try Pressed Peanut Candy</h2>
+            <p>
+                A simple peanut-based treat made for convenient snacking and everyday enjoyment.
+            </p>
+            <a href="mailto:pressedpeanutcandy69@gmail.com" class="button">Contact Us</a>
+        </div>
     </section>
 
-
-    <!-- FOOTER -->
     <footer>
-
-        <p>
-            <strong>Pressed Peanut Candy</strong>
-        </p>
-
-        <p>
-            Ormoc City, Leyte, Philippines
-        </p>
-
-        <p>
-            © 2026 Pressed Peanut Candy. All Rights Reserved.
-        </p>
-
+        <div class="container">
+            <div class="footer-brand">Pressed Peanut Candy</div>
+            <p>Ormoc City, Leyte, Philippines</p>
+            <p>© 2026 Pressed Peanut Candy. All Rights Reserved.</p>
+        </div>
     </footer>
-
 </body>
-  </html>
+</html>
